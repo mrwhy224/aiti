@@ -11,7 +11,35 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use Notifiable; // 👈 Make sure this trait is used
 
+
+
+    public function routeNotificationForSms($notification): string
+    {
+        // Return the database column that stores the user's phone number
+        return $this->phone_number;
+    }
+    // A user can have one role (many-to-one)
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'user_roles');
+    }
+
+    // A user belongs to one company (one-to-many inverse)
+    public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+    public function hasPermission($permissionName): bool
+    {
+        foreach ($this->roles as $role) {
+            if ($role->permissions()->where('name', $permissionName)->exists()) {
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * The attributes that are mass assignable.
      *
