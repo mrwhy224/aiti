@@ -22,11 +22,48 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', function () {
             return view('layouts.vuexy.pages.admin.dashboards');
         })->name('admin_dashboard');
+
         Route::get('/post/list', function () {
             return view('layouts.vuexy.pages.admin.post_list');
         })->name('post_list');
+
+        Route::get('/post/add', function () {
+            return view('layouts.vuexy.pages.admin.post_add');
+        })->name('post_add');
+
+        Route::get('/contact', function () {
+            return view('layouts.vuexy.pages.admin.contact');
+        })->name('contact');
+
+        Route::get('/settings', function () {
+            return view('layouts.vuexy.pages.admin.settings');
+        })->name('settings');
+
+        Route::get('/tags', function () {
+            return view('layouts.vuexy.pages.admin.tags');
+        })->name('tags');
+
+        Route::get('/comments', function () {
+            return view('layouts.vuexy.pages.admin.comments');
+        })->name('comments');
+
+        Route::get('/statistics', function () {
+            return view('layouts.vuexy.pages.admin.statistics');
+        })->name('statistics');
+
+        Route::get('/company/finance', function () {
+            return view('layouts.vuexy.pages.admin.finance');
+        })->name('admin_finance');
+
+        Route::get('/company/list', function () {
+            return view('layouts.vuexy.pages.admin.current_company');
+        })->name('current_company');
+
+        Route::get('/company/pending', function () {
+            return view('layouts.vuexy.pages.admin.pending_company');
+        })->name('pending_company');
     });
-    
+
     Route::group(['prefix' => 'company', 'middleware'=>'role:company'], function () {
         Route::get('/', function () {
             return view('layouts.vuexy.pages.company.dashboards');
