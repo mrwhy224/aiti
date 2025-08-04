@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 256);
             $table->string('display_name', 256);
+            $table->enum('role_group', ['site_owner', 'company_member', 'default'])->default('default');
             $table->timestamps();
         });
     }
