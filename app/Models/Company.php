@@ -3,9 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
 {
+    protected $fillable = [
+        'name',
+        'national_id',
+        'creator_id',
+        'is_confirmed',
+    ];
+    public function manager(): HasOne
+    {
+        return $this->hasOne(User::class)
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'company_manager');
+            });
+    }
     public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(User::class);
