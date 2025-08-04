@@ -1622,7 +1622,7 @@
             <!-- Middle Section -->
             <div class="footer-middle">
                 <div class="partner-logos">
-                    <span>محصولات آژانس ساتیفای:</span>
+                    <span>منتخبی از اعضای انجمن</span>
                     <img src="https://placehold.co/100x40/ffffff/112227?text=DigiClub" alt="DigiClub">
                     <img src="https://placehold.co/100x40/ffffff/112227?text=Asayer" alt="Asayer">
                     <img src="https://placehold.co/100x40/ffffff/112227?text=Savision" alt="Savision">
@@ -1637,7 +1637,7 @@
             <!-- Bottom Section -->
             <div class="footer-bottom">
                 <div class="footer-logo-area">
-                    <img src="https://placehold.co/150x50/ffffff/112227?text=Sitify" alt="Sitify Logo" class="footer-logo">
+                    <img src="https://placehold.co/150x50/ffffff/112227?text=Aiti" alt="Aiti Logo" class="footer-logo">
                     <p>ایده هایتان به واقعیت تبدیل کن</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
