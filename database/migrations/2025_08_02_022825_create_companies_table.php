@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 256);
             $table->string('national_id', 256);
+            $table->boolean('is_confirmed')->default(false)->index();
             $table->foreignId('creator_id');
             $table->timestamps();
         });
