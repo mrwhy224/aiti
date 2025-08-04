@@ -10,7 +10,7 @@ $(function() {
 			ajax: function(data, callback, settings) {
 				// This function fetches the data for the table.
 				// You would replace this with your actual API endpoint.
-				DataService.getData('/category/list')
+				DataService.getData('/post/list')
 					.then(json => callback(json))
 					.catch(error => callback({
 						data: []
@@ -19,50 +19,52 @@ $(function() {
 			columns: [
 				// columns according to your data
 				{ data: 'id' },
-				{ data: 'name' },
-				{ data: 'product_count' },
-				{ data: 'inventory_count' },
-				{ data: 'created_at' },
+				{ data: 'title' },
+				{ data: 'author.name' },
+				{ data: 'view_count' },
+				{ data: 'comment_count' },
+				{ data: 'published_on' },
 				{ data: '' }
 			],
-			columnDefs: [{
-					// For the 'name' column
-					targets: 1,
-					render: function(data, type, full, meta) {
-						const name = full['name'];
-						let output, colorClass = '';
-						if (full['image']) {
-							output = `<img src="${assetPath}images/avatars/${full['image']}" alt="Avatar" width="32" height="32">`;
-						} else {
-							const states = ['success', 'danger', 'warning', 'info', 'primary'];
-							const initials = (name.match(/\b\w/g) || []).slice(0, 2).join('').toUpperCase();
-							output = `<span class="avatar-content">${initials}</span>`;
-							colorClass = `bg-light-${states[full['root'] % states.length]}`;
-						}
-						return `<div class="d-flex justify-content-left align-items-center"><div class="avatar ${colorClass} me-1">${output}</div><div class="d-flex flex-column"><span class="emp_name text-truncate fw-bold">${name}</span></div></div>`;
-					}
-				},
-				{
-					// For the status column
-					targets: 4,
-					render: function(data, type, full, meta) {
-						const statusMap = {
-							0: {
-								title: 'Sub-category',
-								class: 'badge-light-success'
-							},
-							1: {
-								title: 'Root',
-								class: 'badge-light-primary'
-							}
-						};
-						return statusMap[full['root']] ? `<span class="badge rounded-pill ${statusMap[full['root']].class}">${statusMap[full['root']].title}</span>` : data;
-					}
-				},
+			columnDefs: [
+				// {
+				// 	// For the 'name' column
+				// 	targets: 1,
+				// 	render: function(data, type, full, meta) {
+				// 		const name = full['title'];
+				// 		// let output, colorClass = '';
+				// 		// if (full['image']) {
+				// 		// 	output = `<img src="${assetPath}images/avatars/${full['image']}" alt="Avatar" width="32" height="32">`;
+				// 		// } else {
+				// 		// 	const states = ['success', 'danger', 'warning', 'info', 'primary'];
+				// 		// 	const initials = (name.match(/\b\w/g) || []).slice(0, 2).join('').toUpperCase();
+				// 		// 	output = `<span class="avatar-content">${initials}</span>`;
+				// 		// 	colorClass = `bg-light-${states[full['root'] % states.length]}`;
+				// 		// }
+				// 		// return `<div class="d-flex justify-content-left align-items-center"><div class="avatar ${colorClass} me-1">${output}</div><div class="d-flex flex-column"><span class="emp_name text-truncate fw-bold">${name}</span></div></div>`;
+				// 	}
+				// },
+				// {
+				// 	// For the status column
+				// 	targets: 4,
+				// 	render: function(data, type, full, meta) {
+				// 		const statusMap = {
+				// 			0: {
+				// 				title: 'Sub-category',
+				// 				class: 'badge-light-success'
+				// 			},
+				// 			1: {
+				// 				title: 'Root',
+				// 				class: 'badge-light-primary'
+				// 			}
+				// 		};
+				// 		return statusMap[full['root']] ? `<span class="badge rounded-pill ${statusMap[full['root']].class}">${statusMap[full['root']].title}</span>` : data;
+				// 	}
+				// },
 				{
 					// Actions
 					targets: -1,
-					title: 'Actions',
+					title: '',
 					orderable: false,
 					render: function(data, type, full, meta) {
 						return `<div class="d-inline-flex"><a class="pe-1 dropdown-toggle hide-arrow text-primary" data-bs-toggle="dropdown">${feather.icons['more-vertical'].toSvg({ class: 'font-small-4' })}</a><div class="dropdown-menu dropdown-menu-end"><a href="javascript:;" class="dropdown-item attributes-record">${feather.icons['external-link'].toSvg({ class: 'font-small-4 me-50' })}Get attributes</a><a href="javascript:;" class="dropdown-item products-record">${feather.icons['external-link'].toSvg({ class: 'font-small-4 me-50' })}Get products</a><a href="javascript:;" class="dropdown-item inventories-record">${feather.icons['external-link'].toSvg({ class: 'font-small-4 me-50' })}Get inventories</a><a href="javascript:;" class="dropdown-item info-record">${feather.icons['info'].toSvg({ class: 'font-small-4 me-50' })}More info</a><a href="javascript:;" class="dropdown-item delete-record">${feather.icons['trash-2'].toSvg({ class: 'font-small-4 me-50' })}Delete</a></div></div><a href="javascript:;" class="item-edit">${feather.icons['edit'].toSvg({ class: 'font-small-4' })}</a>`;
