@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_roles', function (Blueprint $table) {
             $table->foreignId('user_id')->index();
             $table->foreignId('role_id')->index();
-            $table->dateTime('created_at');
+            $table->timestamps();
         });
     }
 

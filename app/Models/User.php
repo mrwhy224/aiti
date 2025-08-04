@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,9 +22,11 @@ class User extends Authenticatable
         return $this->phone_number;
     }
     // A user can have one role (many-to-one)
-    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function roles(): BelongsToMany
     {
-        return $this->belongsTo(Role::class, 'user_roles');
+        // Add withTimestamps() here
+        return $this->belongsToMany(Role::class, 'user_roles')
+            ->using(UserRole::class);
     }
 
     // A user belongs to one company (one-to-many inverse)
