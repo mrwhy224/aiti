@@ -22,6 +22,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', function () {
             return view('layouts.vuexy.pages.admin.dashboards');
         })->name('admin_dashboard');
+        Route::get('/post/list', function () {
+            return view('layouts.vuexy.pages.admin.post_list');
+        })->name('post_list');
     });
     
     Route::group(['prefix' => 'company', 'middleware'=>'role:company'], function () {
