@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TagSeeder::class, // Make sure you have a TagSeeder
             PostSeeder::class,
+            CommentSeeder::class,
             RequestLogSeeder::class,
         ]);
         // User::factory(10)->create();

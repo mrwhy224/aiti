@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -27,6 +28,10 @@ class User extends Authenticatable
         // Add withTimestamps() here
         return $this->belongsToMany(Role::class, 'user_roles')
             ->using(UserRole::class);
+    }
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     // A user belongs to one company (one-to-many inverse)
