@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Morilog\Jalali\Jalalian;
 
 class PostResource extends JsonResource
 {
@@ -21,12 +22,13 @@ class PostResource extends JsonResource
             'excerpt' => $this->excerpt,
             'body' => $this->body,
             'is_published' => $this->is_published,
-            'published_on' => $this->is_published?$this->published_at->toFormattedDateString():null,
+            'published_on' => $this->is_published?Jalalian::fromCarbon($this->published_at)->format('j F Y'):null,
             'author' => new UserResource($this->whenLoaded('user')),
             'tags' => $this->whenLoaded('tags', function () {
                 return $this->tags->pluck('name');
             }),
             'view_count' => $this->whenCounted('requestLogs'),
+            'comment_count' => $this->whenCounted('comments'),
         ];
     }
 }
