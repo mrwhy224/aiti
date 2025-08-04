@@ -1,5 +1,23 @@
 @extends('layouts.vuexy.layout')
 @section('title', 'اعضای در انتظار تایید')
+@push('vendor_js')
+    <script src="{{ asset('vendors/js/extensions/jstree.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
+@endpush
+@push('page_js')
+    <script src="{{ asset('js/scripts/company_pending.js') }}"></script>
+@endpush
+@push('styles_before_theme')
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/tables/datatable/responsive.bootstrap5.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
+@endpush
 @section('content')
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -16,5 +34,27 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="content-body">
+        <section id="basic-datatable">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <table class="datatables-basic table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>نام حقوقی</th>
+                                <th>شناسه ملی</th>
+                                <th>مدریت</th>
+                                <th>مدت عضویت (از ایجاد پرونده)</th>
+                                <th>عملیات</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 @endsection
