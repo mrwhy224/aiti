@@ -31,6 +31,7 @@ class CommentSeeder extends Seeder
                     'post_id' => $post->id,
                     'user_id' => $users->random()->id,
                     'body' => $faker->paragraph,
+                    'is_confirmed' => $faker->boolean(75), // 75% chance of being confirmed
                     'created_at' => $faker->dateTimeBetween($post->created_at, 'now'),
                 ]);
 
@@ -42,6 +43,7 @@ class CommentSeeder extends Seeder
                             'user_id' => $users->random()->id,
                             'parent_id' => $parentComment->id,
                             'body' => $faker->sentence,
+                            'is_confirmed' => $faker->boolean(75), // 75% chance of being confirmed
                             'created_at' => $faker->dateTimeBetween($parentComment->created_at, 'now'),
                         ]);
                     }

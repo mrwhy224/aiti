@@ -57,9 +57,18 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function comments(): HasMany
+    public function allComments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Get only the confirmed comments for the post.
+     * This is what you would typically show to the public.
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class)->confirmed();
     }
     /**
      * Get all of the post's request logs (views).
