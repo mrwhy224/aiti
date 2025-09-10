@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/single', function () {
+    return view('single');
+});
+Route::get('/blog', function () {
+    return view('blog');
+});
+Route::get('/about', function () {
+    return view('about');
+});
 
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -42,6 +51,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/tags', function () {
             return view('layouts.vuexy.pages.admin.tags');
         })->name('tags');
+
+        Route::get('/backup', function () {
+            return view('layouts.vuexy.pages.admin.backup');
+        })->name('backup');
+
+        Route::get('/log', function () {
+            return view('layouts.vuexy.pages.admin.log');
+        })->name('logp');
 
         Route::get('/comments', function () {
             return view('layouts.vuexy.pages.admin.comments');

@@ -51,6 +51,11 @@
     /* استایل کلی هدر */
     .site-header {
         background-color: transparent;
+        /* START: ADDED FOR STICKY NAV */
+        position: relative;
+        z-index: 1000;
+        transition: all 0.4s ease-in-out;
+        /* END: ADDED FOR STICKY NAV */
     }
 
     /* --- نوار بالایی --- */
@@ -136,6 +141,7 @@
     /* --- بخش اصلی هدر --- */
     .main-header {
         padding: 15px 0;
+        transition: padding 0.4s ease-in-out; /* Add transition for smooth resizing */
     }
 
     /* سمت راست هدر (لوگو و منوی اصلی) */
@@ -157,6 +163,7 @@
         border-radius: 12px;
         padding: 4px;
         object-fit: cover;
+        transition: all 0.4s ease-in-out; /* Add transition for smooth resizing */
     }
 
     .logo-text {
@@ -168,6 +175,7 @@
         font-weight: 700;
         margin: 0 0 4px 0;
         color: #ddd8c4;
+        transition: font-size 0.4s ease-in-out; /* Add transition for smooth resizing */
     }
 
     .logo-text p {
@@ -175,6 +183,7 @@
         margin: 0;
         color: #fff;
         letter-spacing: 0.5px;
+        transition: opacity 0.4s ease-in-out; /* Add transition for smooth fade */
     }
 
     /* منوی اصلی - تغییرات در این بخش اعمال شده */
@@ -199,7 +208,7 @@
         color: #fff;
         font-size: 13px;        /* کمی کوچکتر کردن فونت برای جایگیری بهتر */
         font-weight: 500;
-        transition: color 0.3s ease;
+        transition: all 0.4s ease-in-out;
     }
     .main-nav ul .dropdown-content a {
         color: #212922;
@@ -217,7 +226,7 @@
         font-size: 22px;      /* بزرگتر کردن آیکون */
         margin-bottom: 8px;   /* فاصله بین آیکون و متن */
         color: #fff;
-        transition: color 0.3s ease;
+        transition: all 0.4s ease-in-out;
     }
 
     /* تغییر رنگ آیکون و متن با هاور شدن */
@@ -286,7 +295,7 @@
         font-size: 15px;
         font-weight: 500;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: all 0.4s ease-in-out;
         white-space: nowrap; /* جلوگیری از شکستن متن دکمه */
     }
 
@@ -294,6 +303,70 @@
         background-color: #ddd8c4;
         color: #212922;
     }
+
+    /* START: ADDED FOR STICKY NAV */
+    /* --- Styles for Scrolled Header --- */
+    .site-header.scrolled {
+        position: fixed;
+        top: 5px;
+        right: 5px;
+        left: 5px;
+        border-radius: 5px;
+        /*width: 100%;*/
+        background-color: rgba(80, 128, 142, 0.75); /* A slightly transparent version of the header color */
+        backdrop-filter: blur(10px); /* Frosted glass effect */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 0 10px;
+    }
+
+    /* Hide the top bar when scrolled */
+    .site-header.scrolled .top-bar {
+        display: none;
+    }
+
+    /* Adjust padding on the main header when scrolled */
+    .site-header.scrolled .main-header {
+        padding: 5px 0;
+    }
+
+    /* Make the logo smaller when scrolled */
+    .site-header.scrolled .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-header.scrolled .logo-text h1 {
+        font-size: 16px;
+    }
+
+    /* Hide the logo subtitle when scrolled */
+    .site-header.scrolled .logo-text p {
+        display: none;
+    }
+
+    /* Adjust the main navigation menu items to be horizontal and smaller */
+    .site-header.scrolled .main-nav ul li a {
+        padding: 15px;
+        flex-direction: row; /* Change layout to horizontal */
+        align-items: center;
+    }
+
+    .site-header.scrolled .main-nav ul li a > i:first-child {
+        font-size: 16px;      /* Smaller icon */
+        margin-bottom: 0;     /* Remove bottom margin */
+        margin-left: 8px;     /* Add space between icon and text */
+    }
+    .site-header.scrolled .main-nav ul li a > span {
+        font-size: 12px;
+    }
+
+    /* Make the CTA button slightly smaller */
+    .site-header.scrolled .cta-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+    /* END: ADDED FOR STICKY NAV */
+
 
     .search-box {
         background-color: #f5f5f5;
@@ -550,6 +623,15 @@
         .top-bar, .main-nav, .header-left {
             display: none;
         }
+        /* START: ADDED FOR STICKY NAV */
+        /* Make sure the scrolled nav also hides on mobile */
+        .site-header.scrolled .main-nav, .site-header.scrolled .header-left {
+            display: none;
+        }
+        .site-header.scrolled .hamburger-menu {
+            display: block;
+        }
+        /* END: ADDED FOR STICKY NAV */
         .hamburger-menu {
             display: block; /* Show hamburger icon */
         }
@@ -1036,9 +1118,8 @@
     }
 </style>
 <body>
-<div class="header-hero-wrapper">
+<div class="header-hero-wrapper px-2">
     <header class="site-header">
-        <!-- نوار بالایی هدر -->
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-static-text">
@@ -1053,7 +1134,6 @@
                 </div>
 
                 <div class="w-[1px] h-[15px] bg-[#CCDDF3] mt-1 text-splitter"></div>
-                <!-- بخش راست: منوی ثابت -->
                 <div class="top-bar-nav">
                     <nav class="top-nav">
                         <ul>
@@ -1067,13 +1147,10 @@
             </div>
         </div>
 
-        <!-- بخش اصلی هدر -->
         <div class="main-header">
             <div class="container">
-                <!-- این بخش در سمت راست قرار می‌گیرد -->
                 <div class="header-right">
                     <div class="logo-area">
-                        <!-- لوگوی خود را در اینجا قرار دهید -->
                         <img src="logo-aiti-white.svg" alt="لوگو نظام مهندسی" class="logo-icon">
                         <div class="logo-text">
                             <h1>انجمن صنایع نساجی ایران</h1>
@@ -1082,7 +1159,6 @@
                     </div>
                     <nav class="main-nav">
                         <ul>
-                            <!-- منوی بازشو -->
                             <li class="dropdown">
                                 <a href="#">
                                     <i class="fas fa-sitemap"></i>
@@ -1115,7 +1191,6 @@
                         </ul>
                     </nav>
                 </div>
-                <!-- این بخش در سمت چپ قرار می‌گیرد -->
                 <div class="header-left">
                     <button class="cta-button">
                         عضویت / کارتابل انجمن
@@ -1130,7 +1205,7 @@
     </header>
 
     <main>
-        <section class="hero-section">
+        <section class="hero-section px-3">
             <div class="container">
                 <div class="hero-content">
                     <h1>پیشرو در نوآوری و توسعه صنعت نساجی</h1>
@@ -1139,13 +1214,11 @@
                 </div>
                 <div class="hero-animation">
                     <svg class="animated-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Loom Frame -->
                         <g class="loom-frame">
                             <rect x="10" y="10" width="180" height="15" rx="2"></rect>
                             <rect x="10" y="175" width="180" height="15" rx="2"></rect>
                         </g>
 
-                        <!-- Static Vertical "Warp" Threads -->
                         <g class="warp-threads">
                             <line class="warp-thread" x1="30" y1="25" x2="30" y2="175"></line>
                             <line class="warp-thread" x1="50" y1="25" x2="50" y2="175"></line>
@@ -1157,27 +1230,17 @@
                             <line class="warp-thread" x1="170" y1="25" x2="170" y2="175"></line>
                         </g>
 
-                        <!-- Woven "Weft" Threads -->
                         <g id="carpet-weave">
-                            <!-- Row 8 (Bottom) -->
                             <path class="weft-thread row-8" stroke="var(--weft-color-1)" d="M25 160 H 175"></path>
-                            <!-- Row 7 -->
                             <path class="weft-thread row-7" stroke="var(--weft-color-2)" d="M25 150 H 70 L 90 140 L 110 150 L 130 140 L 175 150"></path>
-                            <!-- Row 6 -->
                             <path class="weft-thread row-6" stroke="var(--weft-color-3)" d="M25 140 H 175"></path>
-                            <!-- Row 5 -->
                             <path class="weft-thread row-5" stroke="var(--weft-color-1)" d="M25 130 H 175"></path>
-                            <!-- Row 4 -->
                             <path class="weft-thread row-4" stroke="var(--weft-color-2)" d="M25 120 H 175"></path>
-                            <!-- Row 3 -->
                             <path class="weft-thread row-3" stroke="var(--weft-color-3)" d="M25 110 H 50 L 70 100 L 90 110 L 110 100 L 130 110 L 150 100 L 175 110"></path>
-                            <!-- Row 2 -->
                             <path class="weft-thread row-2" stroke="var(--weft-color-2)" d="M25 100 H 175"></path>
-                            <!-- Row 1 (Top) -->
                             <path class="weft-thread row-1" stroke="var(--weft-color-1)" d="M25 90 H 175"></path>
                         </g>
 
-                        <!-- Animated Comb/Beater -->
                         <g id="comb-group">
                             <rect class="comb comb-1" x="25" y="80" width="150" height="5" rx="1"></rect>
                             <rect class="comb comb-2" x="25" y="90" width="150" height="5" rx="1"></rect>
@@ -1798,6 +1861,26 @@
                 document.getElementById(tabId).classList.remove('hidden');
             }
         });
+
+        const header = document.querySelector('.site-header');
+        const scrollThreshold = 50; // Pixels to scroll before the nav becomes sticky
+
+        // 1. Create a function for the scroll logic
+        const handleScroll = () => {
+            // Check if the user has scrolled past the threshold
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+
+        // 2. Add the event listener for scrolling
+        window.addEventListener('scroll', handleScroll);
+
+        // 3. Run the function ONCE on page load to check the initial position
+        handleScroll();
+
     });
 
 </script>

@@ -12,7 +12,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item{{ Route::currentRouteNamed('dashboard')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">داشبورد</span></a>
+            <li class="nav-item{{ Route::currentRouteNamed('company_dashboard')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('company_dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">داشبورد</span></a>
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">صفحات</span><i data-feather="more-horizontal"></i>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">مدریت پرونده</span></a>

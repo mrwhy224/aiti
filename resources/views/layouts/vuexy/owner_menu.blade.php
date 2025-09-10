@@ -43,6 +43,9 @@
 
             <li class="nav-item {{ Route::currentRouteNamed('contact')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('contact') }}"><i data-feather="message-circle"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps">اطلاع رسانی</span></a>
             </li>
+            <li class="nav-item {{ Route::currentRouteNamed('backup')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('backup') }}"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps">پشتیبان‌گیری</span></a>
+            </li>
+            
             <li class="nav-item {{ Route::currentRouteNamed('settings')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('settings') }}"><i data-feather="settings"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps"></span>تنظیمات</a>
             </li>
 
