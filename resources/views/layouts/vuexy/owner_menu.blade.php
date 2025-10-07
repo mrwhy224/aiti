@@ -1,7 +1,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html"><span class="brand-logo">
+            <li class="nav-item me-auto"><a class="navbar-brand" href="{{ route('home') }}"><span class="brand-logo">
 
                 </span>
                     <h2 class="text-brand-primary brand-text ">انجمن صنایع نساجی</h2>
@@ -20,7 +20,7 @@
                 <ul class="menu-content">
                     <li class="{{ Route::currentRouteNamed('current_company')?'active':'' }}"><a class="d-flex align-items-center" href="{{ route('current_company') }}"><i data-feather="file"></i><span class="menu-item text-truncate" data-i18n="List">شرکت های ثبت شده</span></a>
                     </li>
-                    <li class="{{ Route::currentRouteNamed('pending_company')?'active':'' }}"><a class="d-flex align-items-center" href="{{ route('pending_company') }}"><i data-feather="plus"></i><span class="menu-item text-truncate" data-i18n="Preview">در انتظار تایید</span></a>
+                    <li class="{{ Route::currentRouteNamed('pending_company')?'active':'' }}"><a class="d-flex align-items-center" href="{{ route('pending_company') }}"><i data-feather="plus"></i><span class="menu-item text-truncate" data-i18n="Preview">اعضای جدید</span></a>
                     </li>
                     <li class="{{ Route::currentRouteNamed('admin_finance')?'active':'' }}"><a class="d-flex align-items-center" href="{{ route('admin_finance') }}"><i data-feather="dollar-sign"></i><span class="menu-item text-truncate" data-i18n="Edit">گزارش مالی</span></a>
                     </li>
@@ -41,7 +41,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item {{ Route::currentRouteNamed('contact')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('contact') }}"><i data-feather="message-circle"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps">اطلاع رسانی</span></a>
+            <li class="nav-item {{ Route::currentRouteNamed('contact')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('contact') }}"><i data-feather="message-circle"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps">پیام رسانی</span></a>
             </li>
             <li class="nav-item {{ Route::currentRouteNamed('backup')?' active':'' }}"><a class="d-flex align-items-center" href="{{ route('backup') }}"><i data-feather="file"></i><span class="menu-title text-truncate" data-i18n="Leaflet Maps">پشتیبان‌گیری</span></a>
             </li>

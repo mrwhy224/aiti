@@ -110,6 +110,8 @@
 {{-- START: Scripts for Editor.js --}}
 @push('page_js')
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/editorjs-button@latest"></script>
 
     <!-- 2. Editor.js Tools -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
@@ -126,7 +128,7 @@
             // Initialize Editor.js
             const editor = new EditorJS({
                 holder: 'editorjs',
-                
+
                 // RTL and Persian Language Configuration
                 i18n: {
                     direction: 'rtl',
@@ -195,6 +197,20 @@
 
                 // Tools Configuration
                 tools: {
+                    AnyButton: {
+                        class: AnyButton,
+                        inlineToolbar: false,
+                        config:{
+                            css:{
+                                "btnColor": "btn--gray",
+                            },
+                            textValidation: (text) => {
+                                console.log("error!", text)
+                                return true;
+                            }
+                        }
+                    },
+                    delimiter: Delimiter,
                     header: {
                         class: Header,
                         inlineToolbar: true,
@@ -204,7 +220,7 @@
                             defaultLevel: 2
                         }
                     },
-                    
+
                     quote: {
                         class: Quote,
                         inlineToolbar: true,
@@ -262,13 +278,14 @@
 
             saveButton.addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent default form submission
-                
+
                 editor.save()
                     .then((outputData) => {
                         // Stringify the JSON output and put it in the hidden input
                         hiddenInput.value = JSON.stringify(outputData);
                         // Now, submit the form
-                        form.submit();
+                        console.log(JSON.stringify(outputData));
+                        // form.submit();
                     })
                     .catch((error) => {
                         console.error('Saving failed: ', error);

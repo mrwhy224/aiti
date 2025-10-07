@@ -1,5 +1,5 @@
 @extends('layouts.vuexy.layout')
-@section('title', 'اعضای در انتظار تایید')
+@section('title', 'اعضای جدید،  در انتظار تایید')
 @push('vendor_js')
     <script src="{{ asset('vendors/js/extensions/jstree.min.js') }}"></script>
     <script src="{{ asset('vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
@@ -23,7 +23,7 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-start mb-0">اعضای در انتظار تایید</h2>
+                    <h2 class="content-header-title float-start mb-0">اعضای جدید،  در انتظار تایید</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">داشبورد </a></li>

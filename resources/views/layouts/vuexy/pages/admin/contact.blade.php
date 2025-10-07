@@ -1,5 +1,5 @@
 @extends('layouts.vuexy.layout')
-@section('title', 'اطلاع رسانی')
+@section('title', 'پیام رسانی')
 
 @section('styles')
 {{-- You might need a CSS file for a multi-select library like Select2 or Tom-Select --}}
@@ -30,11 +30,11 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-start mb-0">ارسال اطلاع رسانی جدید</h2>
+                    <h2 class="content-header-title float-start mb-0">ارسال پیام رسانی جدید</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">داشبورد </a></li>
-                            <li class="breadcrumb-item active">اطلاع رسانی</li>
+                            <li class="breadcrumb-item active">پیام رسانی</li>
                         </ol>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sms_type" id="sms-notification" value="notification">
-                                    <label class="form-check-label" for="sms-notification">ارسال اطلاع‌رسانی (چک کردن پنل)</label>
+                                    <label class="form-check-label" for="sms-notification">ارسال پیام‌رسانی (چک کردن پنل)</label>
                                 </div>
                             </div>
                         </div>

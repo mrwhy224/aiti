@@ -981,7 +981,7 @@
     .social-icons a {
         color: #b0c4de;
         margin-left: 15px;
-        font-size: 18px;
+        font-size: 36px;
         transition: color 0.3s;
     }
     .social-icons a:hover { color: #38c1a1; }
