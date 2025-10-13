@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
             return view('layouts.vuexy.pages.admin.post_list');
         })->name('post_list');
 
+        Route::get('/meeting/member', function () {
+            return view('layouts.vuexy.pages.admin.meeting_member');
+        })->name('meeting_member');
+
         Route::get('/post/add', function () {
             return view('layouts.vuexy.pages.admin.post_add');
         })->name('post_add');
@@ -88,6 +92,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/agents', function () {
             return view('layouts.vuexy.pages.company.agents');
+        })->name('agents');
+
+        Route::get('/cartable', function () {
+            return view('layouts.vuexy.pages.company.cartable');
         })->name('agents');
 
         Route::get('/upload_documents', function () {

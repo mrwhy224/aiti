@@ -13,7 +13,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-primary': '#69a297', // یک رنگ آبی-سبز تیره
+                        'brand-primary': '#074172', // یک رنگ آبی-سبز تیره
                         'brand-secondary': '#e9d8a6', // یک رنگ کرم
                         'brand-accent': '#50808e', // یک رنگ نارنجی-طلایی
                     }
@@ -33,7 +33,7 @@
         direction: rtl;
         margin: 0;
         font-family: 'Vazirmatn', sans-serif;
-        background-color: #fdfdfd;
+        background-color: #f8f9fa;
         color: #333;
         scroll-behavior: smooth;
     }
@@ -60,7 +60,8 @@
 
     /* --- نوار بالایی --- */
     .top-bar {
-        border-bottom: 1px solid #50808e;
+        border-bottom: 4px solid #D4A017;
+        border-radius: 3px;
         padding: 8px 0;
         font-size: 13px;
         color: #fff;
@@ -82,7 +83,7 @@
     }
 
     .top-nav ul li a:hover {
-        color: #ddd8c4;
+        color: #D4A017;
     }
 
     .top-bar-nav, .top-bar-static-text {
@@ -100,7 +101,7 @@
 
     .top-bar-scrolling i {
         margin-left: 10px;
-        color: #ddd8c4; /* رنگ بنفش */
+        color: #D4A017; /* رنگ بنفش */
     }
 
     .top-bar-static-text {
@@ -174,14 +175,14 @@
         font-size: 19px;
         font-weight: 700;
         margin: 0 0 4px 0;
-        color: #ddd8c4;
+        color: #FFFFFF;
         transition: font-size 0.4s ease-in-out; /* Add transition for smooth resizing */
     }
 
     .logo-text p {
         font-size: 12px;
         margin: 0;
-        color: #fff;
+        color: #f0f0f0;
         letter-spacing: 0.5px;
         transition: opacity 0.4s ease-in-out; /* Add transition for smooth fade */
     }
@@ -217,7 +218,7 @@
     .main-nav ul .dropdown-content a:hover {
 
         color: #fff;
-        background: #212922;
+        background: #0D2A4B;
     }
 
 
@@ -273,7 +274,7 @@
 
     .dropdown-content a:hover {
         background-color: #f5f5f5;
-        color: #ddd8c4;
+        color: #D4A017;
     }
 
     .dropdown:hover .dropdown-content {
@@ -287,8 +288,8 @@
     }
 
     .cta-button {
-        background-color: #212922;
-        color: #84B59F;
+        background-color: #D4A017;
+        color: #0D2A4B;
         border: none;
         padding: 12px 28px;
         border-radius: 3px;
@@ -300,8 +301,8 @@
     }
 
     .cta-button:hover {
-        background-color: #ddd8c4;
-        color: #212922;
+        background-color: #FFFFFF;
+        color: #0D2A4B;
     }
 
     /* START: ADDED FOR STICKY NAV */
@@ -313,7 +314,7 @@
         left: 5px;
         border-radius: 5px;
         /*width: 100%;*/
-        background-color: rgba(80, 128, 142, 0.75); /* A slightly transparent version of the header color */
+        background-color: rgba(13, 42, 75, 0.85); /* A slightly transparent version of the header color */
         backdrop-filter: blur(10px); /* Frosted glass effect */
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         padding: 0 10px;
@@ -469,7 +470,7 @@
     #cube4 { animation: float 6s ease-in-out infinite 1.5s; }
     #cube5 { animation: float 6s ease-in-out infinite 2s; }
     .header-hero-wrapper {
-        background: linear-gradient(110deg, #50808e 0%, #69a297 100%);
+        background: linear-gradient(110deg, #005A9C 0%, #0D2A4B 100%); /* گرادینت از آبی لوگو به سرمه‌ای */
         color: #e0f7fa;
     }
 
@@ -573,7 +574,7 @@
         right: -100%; /* Initially hidden off-screen */
         width: 300px;
         height: 100%;
-        background-color: #50808e;
+        background-color: #0D2A4B;
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
         z-index: 1000;
         transition: right 0.4s ease;
@@ -676,7 +677,7 @@
     /* --- Main Container --- */
     .contact-section {
         padding: 50px;
-        background: linear-gradient(-110deg, #50808e 0%, #69a297 100%);
+        background: #0D2A4B;
         display: flex;
         align-items: center;
         flex-flow: column;
@@ -752,12 +753,12 @@
         width: 100%;
         height: 100%;
         min-height: 180px;
-        background-color: rgba(26, 50, 56, 0.7);
-        border: 1px solid #2a4a53;
+        background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه ورودی‌ها */
+        border: 1px solid #005A9C;
+        color: #e0f7fa;
         border-radius: 12px;
         padding: 15px;
         padding-bottom: 80px; /* Space for the button */
-        color: #e0f7fa;
         font-family: 'Vazirmatn', sans-serif;
         font-size: 16px;
         transition: border-color 0.3s, box-shadow 0.3s;
@@ -766,12 +767,12 @@
     }
 
     .textarea-container textarea::placeholder {
-        color: #88aebc;
+        color: #bdc3c7;
     }
 
     .textarea-container textarea:focus {
         outline: none;
-        border-color: #212922;
+        border-color: #D4A017;
     }
 
     .textarea-container .submit-button {
@@ -780,8 +781,8 @@
         bottom: 20px;
         width: auto;
         padding: 15px 40px;
-        background-color: #38c1a1;
-        color: #0d1a1e;
+        background-color: #D4A017;
+        color: #0D2A4B;
         border: none;
         border-radius: 12px;
         font-size: 18px;
@@ -791,7 +792,7 @@
     }
 
     .textarea-container .submit-button:hover {
-        background-color: #45dbc1;
+        background-color: #eac645;
         transform: translateY(-2px);
     }
 
@@ -877,7 +878,10 @@
     }
 
 
-
+    footer section:last-child {
+        background-color: #0D2A4B; /* رنگ سرمه‌ای */
+        border-top: 5px solid #D4A017; /* نوار زرد بالای فوتر */
+    }
     .footer-container {
         width: 90%;
         max-width: 1200px;
@@ -885,7 +889,7 @@
         display: flex;
         flex-direction: column;
         gap: 50px;
-        color: #b0c4de;
+        color: #bdc3c7;
     }
 
     /* Footer Top Section */
@@ -894,7 +898,7 @@
         justify-content: space-between;
         gap: 40px;
         padding-bottom: 40px;
-        border-bottom: 1px solid #2a4a53;
+        border-bottom: 1px solid #005A9C;
     }
 
     .footer-about {
@@ -935,7 +939,7 @@
         align-items: center;
         gap: 40px;
         padding-bottom: 40px;
-        border-bottom: 1px solid #2a4a53;
+        border-bottom: 1px solid #005A9C;
     }
 
     .partner-logos { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
@@ -949,8 +953,8 @@
 
     .newsletter-form { display: flex; }
     .newsletter-form input {
-        background-color: #1a3238;
-        border: 1px solid #2a4a53;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid #005A9C;
         color: #fff;
         padding: 12px;
         border-radius: 0 10px 10px 0;
@@ -959,9 +963,9 @@
     }
     .newsletter-form input::placeholder { color: #88aebc; }
     .newsletter-form button {
-        background-color: #38c1a1;
+        background-color: #D4A017;
         border: none;
-        color: #112227;
+        color: #0D2A4B;
         padding: 0 20px;
         border-radius: 10px 0 0 10px;
         cursor: pointer;
@@ -984,7 +988,7 @@
         font-size: 36px;
         transition: color 0.3s;
     }
-    .social-icons a:hover { color: #38c1a1; }
+    .social-icons a:hover { color: #D4A017; }
 
     .footer-links h4 {
         color: #fff;
@@ -1096,8 +1100,9 @@
     .event-section .swiper-slide {
         background-position: center;
         background-size: cover;
-        width: 320px;
-        height: 420px;
+        /* width: 320px; */ /* این خط حذف می‌شود تا عرض اسلاید شناور باشد */
+        height: 420px; /* ارتفاع ثابت به عنوان معیار اندازه باقی می‌ماند */
+        aspect-ratio: 320 / 420; /* این خط نسبت ابعاد کارت را ثابت نگه می‌دارد */
         background-color: #fff;
         border-radius: 1rem;
         overflow: hidden;
@@ -1133,7 +1138,7 @@
                     </div>
                 </div>
 
-                <div class="w-[1px] h-[15px] bg-[#CCDDF3] mt-1 text-splitter"></div>
+                <div class="w-[4px] h-[15px] bg-[#D4A017] rounded-sm mt-1 text-splitter"></div>
                 <div class="top-bar-nav">
                     <nav class="top-nav">
                         <ul>
@@ -1457,18 +1462,10 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-5 min-h-[70vh] items-center">
 
-    <!-- === Left Column: Shape Container (1/4 width) === -->
-    <!-- This column is hidden on mobile/tablet (lg:block) and acts as a positioning context -->
-    <div class="hidden lg:block h-full relative overflow-hidden lg:col-span-1">
-        <!-- The curved shape element, positioned absolutely BUT relative to its parent grid cell -->
-        <div class="absolute top-1/2 h-[70vh] w-[80vh] -translate-y-1/2 right-0 translate-x-3/4 rounded-[50%] bg-slate-800">
-            <!-- Shape only -->
-        </div>
-    </div>
 
     <!-- === Right Column: Content and Slider (3/4 width) === -->
     <!-- This column is always visible -->
-    <div class="w-full p-8 sm:p-12 md:p-16 lg:col-span-4">
+    <div class="w-full p-8 sm:p-12 md:p-16 lg:col-span-5">
         <div class="max-w-xl mx-auto lg:mx-0 lg:max-w-none">
             <!-- Title and Subtitle -->
             <div class="mb-8">
@@ -1700,7 +1697,7 @@
             <!-- Bottom Section -->
             <div class="footer-bottom">
                 <div class="footer-logo-area">
-                    <img src="https://placehold.co/150x50/ffffff/112227?text=Aiti" alt="Aiti Logo" class="footer-logo">
+                    <img src="logo-aiti-white.svg" alt="لوگو نظام مهندسی" class="footer-logo">
                     <p>ایده هایتان به واقعیت تبدیل کن</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1741,13 +1738,12 @@
 
 </body>
 <script>
-    // Swiper Initialization
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 3.5,
         spaceBetween: 50,
         loop: true,
         loopedSlides: 6,
-        observer: true, // Re-initializes Swiper when the container is mutated
+        observer: true,
         observeParents: true,
         breakpoints: {
             300: {
@@ -1776,7 +1772,6 @@
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 4,
         loop: true,
         autoplay: {
             delay: 3000,
@@ -1793,11 +1788,28 @@
             el: '.swiper-pagination',
             clickable: true,
         },
+        breakpoints: {
+            0: {
+                slidesPerView: 1.3,
+                spaceBetween: 20
+            },
+            640: {
+                slidesPerView: 2.5,
+                spaceBetween: 30
+            },
+            1024: {
+                slidesPerView: 3.5,
+                spaceBetween: 40
+            },
+            1536: {
+                slidesPerView: 4,
+                spaceBetween: 50
+            }
+        }
     });
 
 
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Reveal on Scroll ---
         const revealElements = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
