@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
@@ -38,5 +39,9 @@ class Company extends Model
     public function companyAttributes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(CompanyAttribute::class);
+    }
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(CompanyCategory::class, 'company_category');
     }
 }
