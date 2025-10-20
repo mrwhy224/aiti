@@ -476,8 +476,8 @@
 
 
     .animated-logo {
-        --loom-color: #042123;       /* Wooden loom color */
-        --warp-color: #042123;       /* Cream color for vertical threads */
+        --loom-color: #d4a017;       /* Wooden loom color */
+        --warp-color: #bd9324;       /* Cream color for vertical threads */
         --weft-color-1: #eee;      /* Deep red */
         --weft-color-2: #2980b9;      /* Strong blue */
         --weft-color-3: #093537;      /* Gold/Yellow */
@@ -723,24 +723,16 @@
     }
 
     .form-group input {
-        background-color:  rgba(26, 50, 56, 0.7);
+        background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه ورودی‌ها */
         border: 1px solid #2a4a53;
+        color: #e0f7fa;
         border-radius: 12px;
         padding: 15px;
-        color: #e0f7fa;
         font-family: 'Vazirmatn', sans-serif;
         font-size: 16px;
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    .form-group input::placeholder {
-        color: #88aebc;
-    }
-
-    .form-group input:focus {
-        outline: none;
-        border-color: #212922;
-    }
 
     /* Container for Textarea and Button */
     .textarea-container {
@@ -754,7 +746,7 @@
         height: 100%;
         min-height: 180px;
         background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه ورودی‌ها */
-        border: 1px solid #005A9C;
+        border: 1px solid #2a4a53;
         color: #e0f7fa;
         border-radius: 12px;
         padding: 15px;
@@ -766,11 +758,11 @@
         box-sizing: border-box;
     }
 
-    .textarea-container textarea::placeholder {
+    .textarea-container textarea::placeholder, .form-group input::placeholder {
         color: #bdc3c7;
     }
 
-    .textarea-container textarea:focus {
+    .textarea-container textarea:focus, .form-group input:focus {
         outline: none;
         border-color: #D4A017;
     }
@@ -880,7 +872,7 @@
 
     footer section:last-child {
         background-color: #0D2A4B; /* رنگ سرمه‌ای */
-        border-top: 5px solid #D4A017; /* نوار زرد بالای فوتر */
+        border-top: 8px solid #D4A017; /* نوار زرد بالای فوتر */
     }
     .footer-container {
         width: 90%;
@@ -898,17 +890,18 @@
         justify-content: space-between;
         gap: 40px;
         padding-bottom: 40px;
-        border-bottom: 1px solid #005A9C;
+        border-bottom: 3px solid #D4A017;
     }
 
     .footer-about {
-        flex-basis: 60%;
+        flex-basis: 55%;
         line-height: 1.8;
         text-align: justify;
+        align-content: center;
     }
 
     .footer-contact-info {
-        flex-basis: 40%;
+        flex-basis: 35%;
         display: flex;
         gap: 20px 20px;
         justify-content: space-between;
@@ -939,7 +932,7 @@
         align-items: center;
         gap: 40px;
         padding-bottom: 40px;
-        border-bottom: 1px solid #005A9C;
+        border-bottom: 3px solid #D4A017;
     }
 
     .partner-logos { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
@@ -954,12 +947,15 @@
     .newsletter-form { display: flex; }
     .newsletter-form input {
         background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid #005A9C;
+        border: 2px solid #D4A017;
         color: #fff;
         padding: 12px;
         border-radius: 0 10px 10px 0;
         border-left: none;
         width: 300px;
+    }
+    .newsletter-form input:focus {
+        outline: none;
     }
     .newsletter-form input::placeholder { color: #88aebc; }
     .newsletter-form button {
@@ -976,8 +972,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 40px;
+        margin: 10px 0 30px 0;
     }
-
+    .footer-logo{
+        flex-basis:10%;
+        align-content: center;
+    }
+    .footer-logo-area {
+        text-align: center;
+        align-content: center;
+    }
     .footer-logo-area img.footer-logo {
         height: 40px;
         margin-bottom: 20px;
@@ -985,7 +989,7 @@
     .social-icons a {
         color: #b0c4de;
         margin-left: 15px;
-        font-size: 36px;
+        font-size: 50px;
         transition: color 0.3s;
     }
     .social-icons a:hover { color: #D4A017; }
@@ -1010,18 +1014,17 @@
 
     .footer-certs { display: flex; gap: 15px; }
     .cert-box {
-        background-color: #1a4a53;
+        background-color: #fff;
         border-radius: 10px;
         padding: 15px;
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .cert-box img {
         max-width: 100%;
-        filter: grayscale(1) brightness(2);
     }
 
     /* --- Responsive Styles --- */
@@ -1210,12 +1213,12 @@
     </header>
 
     <main>
-        <section class="hero-section px-3">
+        <section class="hero-section px-6">
             <div class="container">
                 <div class="hero-content">
                     <h1>پیشرو در نوآوری و توسعه صنعت نساجی</h1>
                     <p>ما در انجمن تخصصی نساجی، با ایجاد پل ارتباطی میان متخصصان، صنعتگران و دانشگاهیان، برای رشد و پویایی این صنعت تلاش می‌کنیم.</p>
-                    <button class="hero-cta-button">درخواست مشاوره رایگان</button>
+                    <button class="cta-button">درخواست مشاوره رایگان</button>
                 </div>
                 <div class="hero-animation">
                     <svg class="animated-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -1590,7 +1593,7 @@
 
 <footer>
 
-    <section class="contact-section border-b border-brand-accent p-10 border-b-[10px]">
+    <section class="contact-section p-10 ">
 
         <div class="contact-container">
             <!-- Form Section -->
@@ -1602,7 +1605,7 @@
                             <input type="text" id="name" placeholder="نام و نام خانوادگی">
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" placeholder="شماره همراه">
+                            <input id="phone" placeholder="شماره همراه">
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" placeholder="ایمیل شما">
@@ -1620,14 +1623,10 @@
             <!-- Map Section -->
             <div class="map-wrapper">
                 <div class="map-placeholder">
-                    <img src="https://placehold.co/600x400/1a3238/38c1a1?text=Map" alt="محل ما روی نقشه">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1924.740975362813!2d51.42732563905099!3d35.77499380867512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e06813dc3a9af%3A0xfe3767514ad3fd86!2z2KfZhtis2YXZhiDYtdmG2KfbjNi5INmG2LPYp9is24wg2KfbjNix2KfZhg!5e0!3m2!1sfa!2snl!4v1760997773219!5m2!1sfa!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div class="map-actions">
                         <div class="map-actions-left">
-                            <a href="#"><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i>آدرس ما روی نقشه</a>
-                        </div>
-                        <div class="map-icons">
-                            <a href="#"><i class="fab fa-google"></i></a>
-                            <a href="#"><i class="fas fa-compass"></i></a>
+                            <a href="https://maps.app.goo.gl/fp9BtUtUjMrt3iWi7"><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i>آدرس ما روی نقشه</a>
                         </div>
                     </div>
                 </div>
@@ -1640,8 +1639,13 @@
         <div class="footer-container">
             <!-- Top Section -->
             <div class="footer-top">
+
+                <div class="footer-logo">
+                    <img src="logo-aiti-white.svg" alt="لوگو نظام مهندسی">
+                </div>
                 <div class="footer-about">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد
+                    
+                    سنگ بنای انجمن صنایع نساجی ایران که در ابتدا تحت نام سندیکای صنایع نساجی پنبه ای و الیاف مصنوعی ایران خوانده می شد در ششم اردیبهشت ماه سال ۱۳۴۰ به کوشش روانشادانی چون کاشانی پور، کورس، مقدم، تفضلی، لاجوردی، فرقانی و بسیاری دیگر از زعمای این صنعت گذاشته شد تا مکانی باشد برای هم اندیشی و همکاری صنعتگران این مرز و بوم به جهت فائق آمدن بر مشکلات و مسایل روز صنایع نساجی کشورمان. 
                 </div>
                 <div class="footer-contact-info">
                     <div class="widget-container">
@@ -1665,7 +1669,7 @@
                         <ul class="icon-list-items">
                             <li class="icon-list-item">
                                 <span class="elementor-icon-list-icon"><i aria-hidden="true" class="iconOutline iconOutline-location"></i></span>
-                                <span class="elementor-icon-list-text">تهران - بلوار آفریقا(جردن) انتهای خیابان تور پلاک ۸ -طبقه اول- واحد ۱</span>
+                                <span class="elementor-icon-list-text">تهران - بلوار آفریقا(جردن) انتهای خیابان تور پلاک ۸ -طبقه اول</span>
                             </li>
                             <li class="icon-list-item">
                                 <span class="elementor-icon-list-icon"><i aria-hidden="true" class="iconOutline iconOutline-location"></i></span>
@@ -1697,12 +1701,10 @@
             <!-- Bottom Section -->
             <div class="footer-bottom">
                 <div class="footer-logo-area">
-                    <img src="logo-aiti-white.svg" alt="لوگو نظام مهندسی" class="footer-logo">
-                    <p>ایده هایتان به واقعیت تبدیل کن</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://instagram.com/aiti.org.ir" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://telegram.me/aiti1395" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/989129583657" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1723,10 +1725,9 @@
                 </div>
                 <div class="footer-certs">
                     <div class="cert-box">
-                        <img src="https://placehold.co/80x80/ffffff/1a4a53?text=نماد" alt="نماد اعتماد">
-                    </div>
-                    <div class="cert-box">
-                        <img src="https://placehold.co/80x80/ffffff/1a4a53?text=نماد" alt="نماد ساماندهی">
+                        <a href="https://trustseal.enamad.ir/?id=301912&code=">
+                            <img src="/images/icons/enamad.png" alt="نماد اعتماد">
+                        </a>
                     </div>
                 </div>
             </div>
