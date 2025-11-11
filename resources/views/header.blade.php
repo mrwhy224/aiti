@@ -76,9 +76,9 @@
                     </nav>
                 </div>
                 <div class="header-left">
-                    <button class="cta-button">
+                    <a class="cta-button" href="/login">
                         عضویت / کارتابل انجمن
-                    </button>
+                    </a>
 
                 </div>
                 <button class="hamburger-menu" id="hamburger-btn">
