@@ -22,7 +22,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-primary': '#69a297', // یک رنگ آبی-سبز تیره
+                        'brand-primary': '#074172', // یک رنگ آبی-سبز تیره
                         'brand-secondary': '#e9d8a6', // یک رنگ کرم
                         'brand-accent': '#50808e', // یک رنگ نارنجی-طلایی
                     }
