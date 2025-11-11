@@ -10,7 +10,7 @@
     <meta name="description" content="قالب ادمین Vuexy یک قالب ادمین بوت‌استرپ ۴ بسیار انعطاف‌پذیر، قدرتمند، تمیز و مدرن با امکانات نامحدود است.">
     <meta name="keywords" content="قالب ادمین، قالب ادمین Vuexy، قالب داشبورد، قالب ادمین فلت، قالب ادمین واکنش‌گرا، وب اپلیکیشن">
     <meta name="author" content="PIXINVENT">
-    <title>صفحه ثبت نام چند مرحله‌ای - Vuexy - قالب ادمین بوت‌استرپ</title>
+    <title>ثبت نام شرکت جدید</title>
     <link rel="apple-touch-icon" href="../../../images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../../images/ico/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
