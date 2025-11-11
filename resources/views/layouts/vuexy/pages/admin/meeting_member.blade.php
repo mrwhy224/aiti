@@ -102,7 +102,7 @@
                                 <button type="submit" class="btn btn-primary w-100">افزودن گروهی</button>
                             </div>
                         </form>
-                    </div>
+                    </div>1
                     <!-- Individual Invite Tab -->
                     <div class="tab-pane" id="individual-invite" aria-labelledby="individual-invite-tab" role="tabpanel">
                         <form action="#" method="POST" class="row gy-1 gx-2 align-items-end p-2">

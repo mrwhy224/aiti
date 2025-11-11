@@ -18,6 +18,7 @@ class Attachment extends Model
      */
     protected $fillable = [
         'attachable_id',
+        'session_token',
         'attachable_type',
         'file_path',
         'original_name',

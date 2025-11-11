@@ -13,7 +13,6 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-    use Notifiable; // 👈 Make sure this trait is used
 
 
 
@@ -54,8 +53,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
+        'national_code',
+        'company_id',
+        'otp_code',
+        'otp_expires_at',
+        'phone',
         'password',
     ];
 

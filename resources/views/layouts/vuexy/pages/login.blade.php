@@ -68,8 +68,8 @@
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="mb-1">
-                                        <label for="login-email" class="form-label">ایمیل</label>
-                                        <input type="text" class="form-control ltr" id="login-email" name="email" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
+                                        <label for="login-phone" class="form-label">ایمیل</label>
+                                        <input type="text" class="form-control ltr" id="login-phone" name="phone" placeholder="john@example.com" aria-describedby="login-phone" tabindex="1" autofocus />
                                     </div>
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
@@ -82,7 +82,7 @@
                                             <input type="password" class="form-control form-control-merge ltr" id="login-password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
                                             <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                         </div>
-                                    @error('email')
+                                    @error('phone')
                                         <span style="color: red;">{{ $message }}</span>
                                     @enderror
                                     </div>
@@ -91,7 +91,7 @@
 
                                 <p class="text-center mt-2">
                                     <span>کاربر جدید هستید؟</span>
-                                    <a href="auth-register-basic.html">
+                                    <a href="{{ route('register') }}">
                                         <span>ایجاد حساب کاربری</span>
                                     </a>
                                 </p>

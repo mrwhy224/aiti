@@ -22,11 +22,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'phone' => 'required|string|regex:/^09\d{9}$/',
             'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
+
             $request->session()->regenerate();
             switch (Auth::user()->roles->first()->role_group)
             {
@@ -41,8 +42,8 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'اطلاعات به درستی وارد نشده اند',
-        ])->onlyInput('email');
+            'phone' => 'اطلاعات به درستی وارد نشده اند',
+        ])->onlyInput('phone');
     }
 
     /**

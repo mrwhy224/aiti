@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->morphs('attachable'); // Polymorphic relationship
+            $table->nullableMorphs('attachable'); // Polymorphic relationship
+            $table->string('session_token')->nullable()->index();
             $table->string('file_path');
             $table->string('original_name');
             $table->string('mime_type');

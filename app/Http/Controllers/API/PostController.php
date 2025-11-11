@@ -4,13 +4,61 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use App\Models\Attachment;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    public function add()
+    {
+        $uploadToken = (string) Str::uuid();
+        $tags = Tag::all();
+
+        return view('layouts.vuexy.pages.admin.post_add', [
+            'tags' => $tags,
+            'uploadToken' => $uploadToken
+        ]);
+    }
+    public function upload(Request $request)
+    {$request->validate([
+        'image'        => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        'upload_token' => 'required|string',
+    ]);
+
+        $file = $request->file('image');
+
+
+        $path = $file->store('uploads', 'public');
+
+        // ۳. ایجاد رکورد در دیتابیس بر اساس مایگریشن شما
+        $attachment = Attachment::create([
+            // فیلدهای فایل
+            'file_path'     => $path,
+            'original_name' => $file->getClientOriginalName(),
+            'mime_type'     => $file->getMimeType(),
+            'size'          => $file->getSize(),
+
+            // فیلدهای استراتژی توکن موقت
+            'session_token'   => $request->upload_token,
+            'attachable_id'   => null, // از nullableMorphs
+            'attachable_type' => null, // از nullableMorphs
+        ]);
+
+        // ۴. بازگرداندن پاسخ JSON برای Editor.js
+        return response()->json([
+            'success' => 1,
+            'file' => [
+                'url' => Storage::url($attachment->file_path),
+                'id'  => $attachment->id  // <-- این برای تصویر شاخص ضروری است
+            ]
+        ]);
+    }
     public function index(Request $request)
     {
         $posts = Post::with('user', 'tags')->withCount('requestLogs','comments')->get();
@@ -24,64 +72,50 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-        // مرحله ۱: اعتبارسنجی داده‌های ورودی شامل Slug
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            // Slug می‌تواند خالی باشد اما در صورت وجود باید یکتا باشد
-            // توجه: چون ما در کد خودمان یکتایی را مدیریت می‌کنیم، می‌توانیم قانون 'unique' را از اینجا برداریم
-            // یا آن را نگه داریم تا یک پیام خطای اولیه به کاربر بدهد. من آن را نگه می‌دارم.
-            'slug' => 'nullable|string|max:255|unique:posts,slug',
-            'category_id' => 'required|integer|exists:categories,id',
-            'summary' => 'required|string|max:500',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'body' => 'required|json',
+        $validatedData = $request->validate([
+            'title'               => 'required|string|max:255',
+            'excerpt'             => 'nullable|string',
+            'body'                => 'required|json', // محتوای Editor.js
+            'featured_image_path' => 'nullable|string|max:2048', // URL آپلود شده
+            'upload_token'        => 'required|string',
+            'tags'                => 'nullable|array',
+            'tags.*'              => 'exists:tags,id',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        // مرحله ۲: مدیریت آپلود تصویر (بدون تغییر)
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = Str::slug($request->title, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/posts'), $imageName);
-            $imagePath = 'images/posts/' . $imageName;
-        }
-
-        // --- شروع بخش جدید: ایجاد و مدیریت Slug ---
-        // اگر کاربر Slug را دستی وارد کرده، از آن استفاده کن؛ در غیر این صورت، از روی عنوان بساز
-        $slug = $request->slug ? Str::slug($request->slug, '-') : Str::slug($request->title, '-');
-
-        // چک می‌کنیم که Slug منحصر به فرد باشد. اگر نبود، یک عدد به انتهای آن اضافه می‌کنیم.
-        $originalSlug = $slug;
-        $counter = 1;
-        while (Post::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $counter;
-            $counter++;
-        }
-        // --- پایان بخش جدید ---
-
-        // مرحله ۳: ایجاد و ذخیره پست جدید در دیتابیس
         try {
-            $post = new Post();
-            $post->title = $request->title;
-            $post->slug = $slug; // <- Slug ایجاد شده اینجا ذخیره می‌شود
-            $post->category_id = $request->category_id;
-            $post->summary = $request->summary;
-            $post->image = $imagePath;
-            $post->body = $request->body;
+            $article = Post::create([
+                'user_id'             => Auth::id(),
+                'title'               => $validatedData['title'],
+                'slug'                => Str::slug($validatedData['title']), // باید یونیک بودن را چک کنید
+                'excerpt'             => $validatedData['excerpt'],
+                'body'                => $validatedData['body'], // ذخیره JSON
+                'featured_image_path' => $validatedData['featured_image_path'],
+                'is_published'        => true, // یا هر منطق دیگری که دارید
+                'published_at'        => now(),
+            ]);
 
-            $post->save();
+            if (!empty($validatedData['tags']))
+                $article->tags()->sync($validatedData['tags']);
 
-            // مرحله ۴: بازگرداندن کاربر با پیام موفقیت
-            return redirect()->route('admin.posts.index')->with('success', 'پست جدید با موفقیت ایجاد شد.');
+            Attachment::where('session_token', $validatedData['upload_token'])
+                ->whereNull('attachable_id')
+                ->update([
+                    'attachable_id'   => $article->id,
+                    'attachable_type' => Post::class,
+                    'session_token'   => null,
+                ]);
+
+            return response()->json([
+                'success'     => true,
+                'message'     => 'مطلب با موفقیت ایجاد شد!',
+                'redirect_url' => route('post_list')
+            ]);
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'خطایی در هنگام ذخیره پست رخ داد: ' . $e->getMessage())->withInput();
+            return response()->json([
+                'success' => false,
+                'message' => 'خطایی رخ داد: ' . $e->getMessage()
+            ], 500);
         }
     }
 }

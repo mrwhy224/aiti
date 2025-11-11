@@ -34,5 +34,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'sms_ir' => [
+        'api_key'     => env('SMS_API_KEY'),
+        'line_number' => env('SMS_LINE_NUMBER'),
+        'base_url'    => 'https://api.sms.ir/v1',
+    ],
 ];

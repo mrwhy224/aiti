@@ -43,13 +43,13 @@ $(function() {
 				// 		// return `<div class="d-flex justify-content-left align-items-center"><div class="avatar ${colorClass} me-1">${output}</div><div class="d-flex flex-column"><span class="emp_name text-truncate fw-bold">${name}</span></div></div>`;
 				// 	}
 				// },
-				{
-					// For the status column
-					targets: 3,
-					render: function(data, type, full, meta) {
-						return full['company_manager'] ? data:'(یافت نشد)';
-					}
-				},
+                {
+                    // For the status column
+                    targets: 3,
+                    render: function(data, type, full, meta) {
+                        return full['company_manager'] ? data:'(یافت نشد)';
+                    }
+                },
 				{
 					// Actions
 					targets: -1,

@@ -1,7 +1,7 @@
 @include('layouts.vuexy.header')
 @include('layouts.vuexy.footer')
     <!DOCTYPE html>
-<html class="loading" lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-textdirection="{{ __('config.direction') }}">
+<html class="loading" lang="fa" data-textdirection="rtl">
 @yield('header')
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 @include('layouts.vuexy.navbar')

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('location'); // محل برگزاری
             $table->dateTime('start_time'); // زمان شروع
             $table->dateTime('end_time')->nullable(); // زمان پایان
+            $table->boolean('notify');
             $table->enum('status', ['scheduled', 'ongoing', 'completed', 'canceled'])->default('scheduled'); // وضعیت جلسه
             $table->timestamps();
         });

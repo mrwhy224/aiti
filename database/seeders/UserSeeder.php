@@ -21,19 +21,21 @@ class UserSeeder extends Seeder
         $adminRole = Role::where('name', 'admin')->first();
         if ($adminRole) {
             $adminUser = User::firstOrCreate([
-                'name' => 'Admin User',
-                'email' => 'admin@example.com',
+                'first_name' => 'Admin',
+                'last_name' =>'User',
+                'phone' => '09912906499',
+                'national_code' => '11111111',
                 'password' => Hash::make('password'),
             ]);
             $adminUser->roles()->attach($adminRole);
         }
 
         // Create 10 random users
-        User::factory(10)->create()->each(function ($user) use ($roles) {
-            // Attach a random role to each user
-            $user->roles()->attach(
-                $roles->random(1)->pluck('id')->toArray()
-            );
-        });
+//        User::factory(10)->create()->each(function ($user) use ($roles) {
+//            // Attach a random role to each user
+//            $user->roles()->attach(
+//                $roles->random(1)->pluck('id')->toArray()
+//            );
+//        });
     }
 }

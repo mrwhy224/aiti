@@ -7,7 +7,6 @@
     <script src="{{ asset('vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('vendors/js/tables/datatable/responsive.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
 @endpush
 @push('page_js')

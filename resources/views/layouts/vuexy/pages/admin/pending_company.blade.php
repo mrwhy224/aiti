@@ -27,7 +27,7 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">داشبورد </a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('current_company') }}">شرکت های ثبت شده</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('company.current') }}">شرکت های ثبت شده</a></li>
                             <li class="breadcrumb-item active">در انتظار تایید</li>
                         </ol>
                     </div>

@@ -14,9 +14,9 @@ $(function() {
 				$(element).valid();
 			},
 			rules: {
-				'login-email': {
+				'login-phone': {
 					required: true,
-					email: true
+					phone: true
 				},
 				'login-password': {
 					required: true
@@ -24,7 +24,7 @@ $(function() {
 			},
 			submitHandler: function(form) {
 				const loginData = {
-					email: $(form).find('input[name="login-email"]').val(),
+					phone: $(form).find('input[name="login-phone"]').val(),
 					password: $(form).find('input[name="login-password"]').val()
 				};
 				$.ajax({
